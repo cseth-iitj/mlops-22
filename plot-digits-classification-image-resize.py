@@ -13,6 +13,7 @@ digits = datasets.load_digits()
 _, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 3))
 for ax, image, label in zip(axes, digits.images, digits.target):
     ax.set_axis_off()
+    print(f"original image size {image.size}")
     image_rescaled = rescale(image, 0.25, anti_aliasing=False)
     image_resized = resize(image, (image.shape[0] // 4, image.shape[1] // 4), anti_aliasing=True)
     image_downscaled = downscale_local_mean(image, (4, 3))

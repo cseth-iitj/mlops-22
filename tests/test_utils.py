@@ -55,6 +55,28 @@ def test_tune_and_save():
     assert os.path.exists(actual_model_path)
     assert type(load(actual_model_path)) == type(clf)
 
+def test_biased_model():
+    h_param_comb = helper_h_params()
+    x_train, y_train = helper_create_bin_data(n=100, d=7)
+    x_dev, y_dev = x_train, y_train
+
+    clf = svm.SVC()
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(x_dev)
+    #If the predicted value of y_pred contains only one unique value then they have only one lable present
+    assert (np.unique(np.array(y_pred))).shape[0] != 1
+
+def test_predict_all_classes():
+    h_param_comb = helper_h_params()
+    x_train, y_train = helper_create_bin_data(n=100, d=7)
+    x_dev, y_dev = x_train, y_train
+
+    clf = svm.SVC()
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(x_dev)
+    #If the predicted value of y_pred contains only all uniques values same as y_train the it has all labels.
+    assert (np.unique(np.array(y_pred))).shape[0] == (np.unique(np.array(y_train))).shape[0]
+
 # what more test cases should be there
 # irrespective of the changes to the refactored code.
 

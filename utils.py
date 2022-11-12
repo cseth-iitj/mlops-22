@@ -144,3 +144,16 @@ def tune_and_save(
 
 def macro_f1(y_true, y_pred, pos_label=1):
     return f1_score(y_true, y_pred, pos_label=pos_label, average='macro', zero_division='warn')
+
+perf_test = {}
+for k in range(5):
+    train, dev, test = create_splits()
+    best_model = train_and_h_tune(train, dev, model_type
+    perf_test[mode_type][k] = predict(best_model, test)
+
+perf_test['svm'] = [75,76,78....]
+perf_test['decision_tree']= [74,75,77....]
+
+mean(perf_test['svm']), std(perf_test['svm'])
+mean(perf_test['decision_tree']), std(perf_test['decision_tree'])
+

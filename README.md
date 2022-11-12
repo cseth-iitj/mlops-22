@@ -43,4 +43,10 @@ Best hyperparameters were:
 {'gamma': 0.0001, 'C': 5}
 ```
 
+```
+docker build -t exp:v1 -f docker/Dockerfile .
+docker run -it exp:v1
 
+```
+export FLASK_APP=api/app.py ; flask run
+```

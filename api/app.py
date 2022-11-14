@@ -10,7 +10,6 @@ model = load(model_path)
 def hello_world():
     return "<!-- hello --> <b> Hello, World!</b>"
 
-
 # get x and y somehow    
 #     - query parameter
 #     - get call / methods
@@ -31,3 +30,13 @@ def predict_digit():
     print("done loading")
     predicted = model.predict([image])
     return {"y_predicted":int(predicted[0])}
+
+@app.route("/checkSame", methods=['POST'])
+def checkSame():
+    image1 = request.json['image1']
+    image2 = request.json['image2']
+    predicted1 = model.predict([image1])
+    predicted2 = model.predict([image2])
+    if predicted1 == predicted2:
+        return "Images are same"
+    return "Images are not same"

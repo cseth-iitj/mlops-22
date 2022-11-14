@@ -1,4 +1,4 @@
-# FROM ubuntu:latest
+#FROM ubuntu:latest
 FROM python:3.8.1
 COPY ./*.py /exp/
 COPY ./requirements.txt /exp/requirements.txt

@@ -1,3 +1,13 @@
+#Model comparison output
+		SVC 	DT
+0 Run 1 0.97765 0.860335
+1 Run 2 0.98324 0.888268
+2 Run 3 0.97206 0.849162
+3 Run 4 0.98882 0.860335
+4 Run 5 1.00000 0.888889
+5 mean 0.98436 0.870391
+6 std 0.010746 0.019513
+
 # mlops-22
 Here is the current output of `python plot_graphs.py`
 
@@ -44,3 +54,13 @@ Best hyperparameters were:
 ```
 
 
+
+
+```
+docker build -t exp:v1 -f docker/Dockerfile .
+docker run -it exp:v1
+```
+
+```
+export FLASK_APP=api/app.py ; flask run
+```
